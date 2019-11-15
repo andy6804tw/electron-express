@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
+
 <body>
-    
+    <div id="loading" class="loading d-none">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    </div>
+    <form action="javascript:void(0);" method="post">
+        PORT:<br>
+        <input type="text" id="input_port" value="PORT">
+        <br>
+        Topic:<br>
+        <input type="text" id="input_topic" value="Topic">
+        <br><br>
+        <input type="submit" value="Submit" onclick="addData()">
+    </form>
+
+
     <script src="./js/index.js"></script>
-    <script>
-        
-    </script>
 </body>
+
 </html>
