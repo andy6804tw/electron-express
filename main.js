@@ -16,7 +16,7 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-  console.log('s',process.env.NODE_ENV)
+  console.log('s',process.env.PORT)
   // Open the DevTools.
   if (process.env.NODE_ENV == 'development') {
     mainWindow.webContents.openDevTools();
