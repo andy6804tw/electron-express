@@ -19,7 +19,7 @@ function createWindow () {
   console.log('s',process.env.PORT)
   // Open the DevTools.
   if (process.env.NODE_ENV == 'development') {
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
   }
   // mainWindow.webContents.openDevTools();
   mainWindow.on("close", () => {
@@ -51,3 +51,10 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+const ipcMain = require('electron').ipcMain;
+
+ipcMain.on('notes', function(event, data) {
+    mainWindow.webContents.openDevTools();
+      console.log(data) // this properly shows the data
+});

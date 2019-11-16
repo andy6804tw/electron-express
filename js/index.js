@@ -1,5 +1,5 @@
 const request = require("request");
-// const _ = require("lodash")
+const key = require("keymaster")
 const { ipcRenderer } = require('electron');
 const spawn = require("child_process").spawn
 let node;
@@ -59,3 +59,9 @@ function redirectOutput(x) {
   });
 }
 
+/**  */
+key("f1", () => {
+  console.log('f1');
+  // ipcRenderer.webContents.openDevTools();
+  ipcRenderer.send('notes', "new note");
+});
