@@ -1,14 +1,14 @@
-const {app, BrowserWindow} = require('electron')
-const path = require('path')
-const url = require('url')
+const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
+const url = require('url');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -16,12 +16,10 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-  console.log('s',process.env.PORT)
   // Open the DevTools.
   if (process.env.NODE_ENV == 'development') {
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
   }
-  // mainWindow.webContents.openDevTools();
   mainWindow.on("close", () => {
     mainWindow.webContents.send("stop-server");
   });
@@ -52,9 +50,7 @@ app.on('activate', () => {
   }
 })
 
-const ipcMain = require('electron').ipcMain;
-
-ipcMain.on('notes', function(event, data) {
-    mainWindow.webContents.openDevTools();
-      console.log(data) // this properly shows the data
+// Listening to open DEV Tools
+ipcMain.on('openDevTools', function (event, data) {
+  mainWindow.webContents.openDevTools();
 });

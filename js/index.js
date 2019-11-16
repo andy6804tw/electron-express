@@ -63,5 +63,5 @@ function redirectOutput(x) {
 key("f1", () => {
   console.log('f1');
   // ipcRenderer.webContents.openDevTools();
-  ipcRenderer.send('notes', "new note");
+  ipcRenderer.send('openDevTools', true);
 });
