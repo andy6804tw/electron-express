@@ -13,9 +13,10 @@ const addData=()=>{
   const loading=document.getElementById("loading");
   const topic=document.getElementById("input_topic").value;
   const port=document.getElementById("input_port").value;
+  const app = require('electron').remote.app;
   env.PORT = port;
   env.NODE_ENV='development';
-  node = spawn("node", ["./api/dist/index.js"], { cwd: process.cwd(), env: env });
+  node = spawn("node", ["./api/dist/index.js"], { cwd: app.getAppPath(), env: env });
   redirectOutput(node.stdout);
   redirectOutput(node.stderr);
   loading.classList.remove("d-none");
