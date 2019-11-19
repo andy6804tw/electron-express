@@ -16,7 +16,13 @@ const addData=()=>{
   const app = require('electron').remote.app;
   env.PORT = port;
   env.NODE_ENV='development';
-  node = spawn("node", ["./api/dist/index.js"], { cwd: app.getAppPath(), env: env });
+  const node=require("child_process").fork(
+    `${app.getAppPath()}/api/dist/index`,[],
+    {
+      stdio: ["pipe","pipe","pipe","ipc"],env: env
+    }
+  );
+  // node = spawn("node", ["./api/dist/index.js"], { cwd: app.getAppPath(), env: env });
   redirectOutput(node.stdout);
   redirectOutput(node.stderr);
   loading.classList.remove("d-none");
