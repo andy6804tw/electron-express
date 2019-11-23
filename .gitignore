@@ -54,3 +54,4 @@ coverage.lcov
 
 # upload file
 /upload
+release-builds
